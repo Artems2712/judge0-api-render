@@ -1,6 +1,6 @@
-# config/puma.rb
-max = (ENV['RAILS_MAX_THREADS'].presence || 5).to_i
-min = (ENV['RAILS_MIN_THREADS'].presence || max).to_i
+# config/puma.rb (короткая, безопасная версия)
+max = (ENV['RAILS_MAX_THREADS'].to_i > 0 ? ENV['RAILS_MAX_THREADS'].to_i : 5)
+min = (ENV['RAILS_MIN_THREADS'].to_i > 0 ? ENV['RAILS_MIN_THREADS'].to_i : max)
 threads min, max
 
 port        (ENV['PORT'] || 10000).to_i
