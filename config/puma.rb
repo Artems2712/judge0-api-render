@@ -1,11 +1,11 @@
 # config/puma.rb
-max  = Integer(ENV.fetch('RAILS_MAX_THREADS', 5))
-min  = Integer(ENV.fetch('RAILS_MIN_THREADS', max))
+max = (ENV['RAILS_MAX_THREADS'].presence || 5).to_i
+min = (ENV['RAILS_MIN_THREADS'].presence || max).to_i
 threads min, max
 
-port        Integer(ENV.fetch('PORT', 10000))
+port        (ENV['PORT'] || 10000).to_i
 environment ENV.fetch('RAILS_ENV', 'production')
 
-workers Integer(ENV.fetch('WEB_CONCURRENCY', 2))
+workers (ENV['WEB_CONCURRENCY'] || 2).to_i
 preload_app!
 plugin :tmp_restart
