@@ -4,10 +4,10 @@ ENV ENABLE_AUTH=false
 ENV PORT=10000
 ENV RAILS_ENV=production
 
-# В образе Judge0 rails-приложение лежит в /app
-WORKDIR /app
+# корректный рабочий каталог
+WORKDIR /api
 
-# перезаписываем стандартный puma.rb нашим
+# перезаписываем puma.rb прямо в /api/config
 COPY config/puma.rb ./config/puma.rb
 
 EXPOSE 10000
