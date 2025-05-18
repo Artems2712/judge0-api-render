@@ -1,4 +1,4 @@
-# config/puma.rb  (замена оригиналу)
+# config/puma.rb
 max  = Integer(ENV.fetch('RAILS_MAX_THREADS', 5))
 min  = Integer(ENV.fetch('RAILS_MIN_THREADS', max))
 threads min, max
