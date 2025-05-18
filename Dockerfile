@@ -1,14 +1,11 @@
 # ---------- Dockerfile ----------
-# Берём готовый контейнер Judge0 API (стабильный тег 1.13.1).
 FROM judge0/api:1.10.0
 
-# 1) Без JWT-авторизации – мобильному приложению не нужны токены
-ENV ENABLE_AUTH=false
+ENV ENABLE_AUTH=false         # токены не нужны
+ENV PORT=10000                # Render будет пробрасывать этот port внутрь
+ENV RAILS_ENV=production
+ENV RAILS_MAX_THREADS=5
+ENV WEB_CONCURRENCY=2
 
-# 2) Render отдаёт порт в переменную PORT
-#    API слушает API_PORT, поэтому перекидываем значение
-ENV API_PORT=${PORT:-8080}
-
-# Judge0 уже запускает ./start.sh сам, ENTRYPOINT менять не нужно
-EXPOSE 8080
-# ---------------------------------
+EXPOSE 10000
+# --------------------------------
